@@ -15,10 +15,13 @@ Runs "sudo shutdown -h now" to safely shutdown the Pi.
 
 ##How to use
 Clone script to Pi.
-Attach leads and a switch across pins 12(GPIO18) and a ground (pin 6,9,14,20,25,30,34 or 39).
+Attach leads and a switch across pins 5(GPIO3) and a ground (pin 6,9,14,20,25,30,34 or 39).
 Manually run script so we can verify it works. "sudo python shutdown.py"
 Enable script to run at boot, such as cron.
 Edit crontab "sudo crontab -e".
 Add "@reboot python /home/pi/rpi-shutdown/shutdown.py &"
 Push button and the Pi should shutdown.
 Reboot and push button again to verify cron loaded the script.
+
+##Note
+The original script used GPIO18. I altered it to use GPIO3, since jumping GPIO3 to ground will also power on the Pi. So a single switch can now function as a on/off switch. Time will tell if this has long term issues. I haven't seen any other articles using GPIO3 to power off with.
